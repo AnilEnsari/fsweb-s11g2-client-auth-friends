@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  font-size: 2rem;
+  color: black;
+  justify-content: space-around;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+header a {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+}
+hr {
+  border: 2px black solid;
+}
