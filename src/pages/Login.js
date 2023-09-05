@@ -1,15 +1,25 @@
 import { useContext } from "react";
 import "./addfriend.css";
 import { FriendsContext } from "../context/FriendsProvider";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 const Login = () => {
-  const { user, setUser } = useContext(FriendsContext);
-
-  const passHandler = (e) => {
-    e.preventDefault();
-  };
+  const { user, setUser, setCheck } = useContext(FriendsContext);
+  const history = useHistory();
   const handleChange = (event) => {
     setUser(user, (user[event.target.name] = event.target.value));
   };
+  const passHandler = () => {
+    axios
+      .post("http://localhost:9000/api/login", user)
+      .then((res) => {
+        localStorage.setItem("s11g2", res.data.token);
+        setCheck(true);
+        history.push("/friends");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="addFriendContainer">
       <h1>LOGIN</h1>

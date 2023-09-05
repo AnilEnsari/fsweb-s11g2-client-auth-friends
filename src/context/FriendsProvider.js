@@ -52,6 +52,7 @@ const FriendsProvider = ({ children }) => {
   const [friends, setFriends] = useState(initialData);
   const addNewFriend = (friend) => setFriends([...friends, friend]);
   const [user, setUser] = useState({ username: "", password: "" });
+  const [check, setCheck] = useState(false);
 
   return (
     <FriendsContext.Provider
@@ -61,6 +62,8 @@ const FriendsProvider = ({ children }) => {
         addNewFriend,
         user,
         setUser,
+        check,
+        setCheck,
       }}
     >
       {children}

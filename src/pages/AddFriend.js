@@ -1,19 +1,20 @@
 import { useContext, useState } from "react";
 import { FriendsContext } from "../context/FriendsProvider";
 import "./addfriend.css";
+import { useHistory } from "react-router-dom";
 const AddFriend = () => {
+  const history = useHistory();
   const [newFriend, setNewFriend] = useState({
     name: "",
     email: "",
     id: Date.now(),
   });
   const { addNewFriend } = useContext(FriendsContext);
-  const { friends } = useContext(FriendsContext);
 
   const addHandler = (e) => {
     e.preventDefault();
     addNewFriend(newFriend);
-    console.log(friends);
+    history.push("/friendlist");
   };
   const handleChange = (event) => {
     setNewFriend(
